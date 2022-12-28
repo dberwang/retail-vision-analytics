@@ -1,17 +1,15 @@
 <!doctype html>
 <html>
   <head>
-    <title>Video Upload Webpage</title>
-  </head>
-  <body>
-    <h1>Video Upload</h1>
-    <form method="POST" action="" enctype="multipart/form-data">
-      <p><input type="file" name="file">
-         <input type="submit" value="Upload"></p>
-    </form>
-    <!-- <hr> -->
-    <!-- {% for file in files %}
-      <img src="{{ url_for('upload', filename=file) }}" style="width: 256px">
-    {% endfor %} -->
-  </body>
+    <title>Retail Vision Analytics</title>
+</head>
+<h2>Upload and Process Video</h2>
+<body>
+  <form method = "post" enctype="multipart/form-data">
+		<input type="file" name="file" />
+		<input type = "submit" value="Upload and Process">
+	</form>
+</body>
+<p><small>1. Video shall be in mp4 format.</small></p>
+<p><small>2. Maximum video size is 2 GB.</small></p>
 </html>
