@@ -21,12 +21,14 @@ RUN apt-get update && apt-get install -y \
 
 # added this section to clone my repo and cd
 RUN git clone https://github.com/dberwang/retail-vision-analytics \
-    && cd retail-vision-analytics
+    && cd retail-vision-analytics \
+    && cd ByteTrack
 
-RUN git clone https://github.com/ifzhang/ByteTrack \
-    && cd ByteTrack \
-    && git checkout 3434c5e8bc6a5ae8ad530528ba8d9a431967f237 \
-    && mkdir -p YOLOX_outputs/yolox_x_mix_det/track_vis \
+# change below - do not need to clone BT twice!
+# RUN git clone https://github.com/ifzhang/ByteTrack \
+#     && cd ByteTrack \
+
+RUN mkdir -p YOLOX_outputs/yolox_x_mix_det/track_vis \
     && sed -i 's/torch>=1.7/torch==1.9.1+cu111/g' requirements.txt \
     && sed -i 's/torchvision==0.10.0/torchvision==0.10.1+cu111/g' requirements.txt \
     && sed -i "s/'cuda'/0/g" tools/demo_track.py \
@@ -47,11 +49,13 @@ RUN git clone https://github.com/NVIDIA-AI-IOT/torch2trt \
     && git apply 8b9fb46ddbe99c2ddf3f1ed148c97435cbeb8fd3.patch \
     && python3 setup.py install
 
+# RUN apt-get update && apt-get install -y --no-install-recommends nvidia-container-runtime
+
 # added the below section to install nvidia drivers compatible with tensorrt
-RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb \
-    && dpkg -i cuda-keyring_1.0-1_all.deb \
-    && apt-get update \
-    && apt-get -y install cuda
+# RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb \
+#     && dpkg -i cuda-keyring_1.0-1_all.deb \
+#     && apt-get update \
+#     && apt-get -y install cuda
 
 RUN echo "root:root" | chpasswd \
     && adduser --disabled-password --gecos "" "${USERNAME}" \

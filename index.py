@@ -27,8 +27,8 @@ def index():
     return render_template('index.html')
 
 @app.route('/', methods=['POST'])
-def upload_video():
-    # Upload file
+def upload_process_video():
+    # Upload video
     uploaded_file = request.files['file']
     filename = secure_filename(uploaded_file.filename)
     if filename != '':
@@ -37,23 +37,25 @@ def upload_video():
             return render_template('index.html')
         uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
         
-        # Upload complete
+        # Process video
+        os.chdir('/workspace/retail-vision-analytics/ByteTrack')
+        os.system('python3 tools/demo_track.py video --path videos/' + filename + \
+            ' -f exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --fp16 --fuse --save_result')
+        os.chdir('/workspace/retail-vision-analytics')
+        # os.chdir('/home/paperspace/retail-vision-analytics/ByteTrack')
+        # os.system('python3 tools/demo_track.py video --path videos/' + filename + \
+        #     ' -f exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --fp16 --fuse --save_result')
+        # os.chdir('/home/paperspace/retail-vision-analytics')     
         return render_template('results.html')
-    
-    # Upload not complete, restore upload page
-    return render_template('index.html')
 
-def process_video(filename):
-    # Process video
-    os.chdir('/home/paperspace/retail-vision-analytics/ByteTrack')
-    os.system('python3 tools/demo_track.py video --path videos/' + filename + \
-        ' -f exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --fp16 --fuse --save_result')
-    os.chdir('/home/paperspace/retail-vision-analytics')
+    else:
+        # Upload not complete, restore upload page
+        return render_template('index.html')
 
-    return "File successfully uploaded and processed.", 204
 
-@app.route('/view_mp4', methods=['GET', 'POST'])
-def view_mp4():
+@app.route('/viewmp4', methods=['GET', 'POST'])
+def viewmp4():
+    # create a string for the mp4 path and filename
     mp4_path = ''
     mp4_filename = ''
 
@@ -72,11 +74,12 @@ def view_mp4():
 
     # play the video
     # works, but error in safari: failed to load resource: plug-in handled load
+    # does not work in brave
     return send_from_directory(directory=mp4_path, filename=mp4_filename)
 
 
-@app.route('/view_txt', methods=['GET', 'POST'])
-def view_txt():
+@app.route('/viewtxt', methods=['GET', 'POST'])
+def viewtxt():
     txt_filename = ''
 
     # find the name of the text file
