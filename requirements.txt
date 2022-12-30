@@ -21,13 +21,8 @@ onnx==1.8.1
 onnxruntime==1.8.0
 onnx-simplifier==0.3.5
 
-#
-cython
-cython_bbox
-
-
 # to get flask running
 Werkzeug==2.2.2
 markupsafe==2.1.1
-jinja2 3.1.2
+jinja2==3.1.2
 flask==2.1.0

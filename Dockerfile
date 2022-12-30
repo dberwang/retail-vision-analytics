@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USERNAME=user
 ARG WORKDIR=/workspace/retail-vision-analytics
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && sudo apt-get -y upgrade && apt-get install -y \
         automake autoconf libpng-dev nano python3-pip \
         curl zip unzip libtool swig zlib1g-dev pkg-config \
         python3-mock libpython3-dev libpython3-all-dev \
@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
         libva-dev libdrm-dev xorg xorg-dev protobuf-compiler \
         openbox libx11-dev libgl1-mesa-glx libgl1-mesa-dev \
         libtbb2 libtbb-dev libopenblas-dev libopenmpi-dev \
+        libprotoc-dev python3-opencv \
     && sed -i 's/# set linenumbers/set linenumbers/g' /etc/nanorc \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*

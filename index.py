@@ -35,9 +35,12 @@ def upload_process_video():
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             return render_template('index.html')
+        print('Uploading... Please wait')
         uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-        
+        print('Upload complete')
+
         # Process video
+        print('Processing... Please wait a while')
         os.chdir('/workspace/retail-vision-analytics/ByteTrack')
         os.system('python3 tools/demo_track.py video --path videos/' + filename + \
             ' -f exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --fp16 --fuse --save_result')
@@ -75,7 +78,7 @@ def viewmp4():
     # play the video
     # works, but error in safari: failed to load resource: plug-in handled load
     # does not work in brave
-    return send_from_directory(directory=mp4_path, filename=mp4_filename)
+    return send_from_directory(mp4_path, mp4_filename)
 
 
 @app.route('/viewtxt', methods=['GET', 'POST'])
@@ -89,7 +92,7 @@ def viewtxt():
             txt_filename = f
     
     # display the text results
-    return send_from_directory(directory=app.config['DOWNLOAD_PATH'], filename=txt_filename)    
+    return send_from_directory(app.config['DOWNLOAD_PATH'], txt_filename)    
 
 if __name__ == "__main__":
     app.run(debug=True)
