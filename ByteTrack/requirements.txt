@@ -5,7 +5,7 @@ opencv_python
 loguru
 scikit-image
 tqdm
-torchvision
+torchvision>=0.10.0
 torch2trt
 Pillow
 thop
