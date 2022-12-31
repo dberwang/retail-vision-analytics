@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USERNAME=user
 ARG WORKDIR=/workspace/retail-vision-analytics
 
-RUN apt-get update && sudo apt-get -y upgrade && apt-get install -y \
+RUN apt-get update && apt-get -y upgrade && apt-get install -y \
         automake autoconf libpng-dev nano python3-pip \
         curl zip unzip libtool swig zlib1g-dev pkg-config \
         python3-mock libpython3-dev libpython3-all-dev \
@@ -15,7 +15,7 @@ RUN apt-get update && sudo apt-get -y upgrade && apt-get install -y \
         libva-dev libdrm-dev xorg xorg-dev protobuf-compiler \
         openbox libx11-dev libgl1-mesa-glx libgl1-mesa-dev \
         libtbb2 libtbb-dev libopenblas-dev libopenmpi-dev \
-        libprotoc-dev python3-opencv \
+        libprotoc-dev python3-opencv python3.8-dev python3.8-venv \
     && sed -i 's/# set linenumbers/set linenumbers/g' /etc/nanorc \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
@@ -23,15 +23,10 @@ RUN apt-get update && sudo apt-get -y upgrade && apt-get install -y \
 # added this section to clone my repo and cd
 RUN git clone https://github.com/dberwang/retail-vision-analytics \
     && cd retail-vision-analytics \
-    && cd ByteTrack
-
-# change below - do not need to clone BT twice!
-# RUN git clone https://github.com/ifzhang/ByteTrack \
-#     && cd ByteTrack \
-
-RUN mkdir -p YOLOX_outputs/yolox_x_mix_det/track_vis \
-    && sed -i 's/torch>=1.7/torch==1.9.1+cu111/g' requirements.txt \
-    && sed -i 's/torchvision==0.10.0/torchvision==0.10.1+cu111/g' requirements.txt \
+    && cd ByteTrack \
+    && mkdir -p YOLOX_outputs/yolox_x_mix_det/track_vis \
+    # && sed -i 's/torch>=1.7/torch==1.9.1+cu111/g' requirements.txt \
+    # && sed -i 's/torchvision==0.10.0/torchvision==0.10.1+cu111/g' requirements.txt \
     && sed -i "s/'cuda'/0/g" tools/demo_track.py \
     && pip3 install pip --upgrade \
     && pip3 install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html \
@@ -39,6 +34,10 @@ RUN mkdir -p YOLOX_outputs/yolox_x_mix_det/track_vis \
     && pip3 install cython \
     && pip3 install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI' \
     && pip3 install cython_bbox gdown \
+    && mkdir pretrained \
+    && cd pretrained \
+    && gdown "1P4mY0Yyd3PPTybgZkjMYhFri88nTmJX5" \
+    && cd .. \
     && ldconfig \
     && pip cache purge
 
