@@ -6,7 +6,7 @@ loguru
 scikit-image
 tqdm
 torchvision==0.14.1
-torch2trt==0.3.0
+torch2trt
 Pillow
 thop
 ninja
