@@ -25,8 +25,8 @@ RUN git clone https://github.com/dberwang/retail-vision-analytics \
     && cd retail-vision-analytics \
     && cd ByteTrack \
     && mkdir -p YOLOX_outputs/yolox_x_mix_det/track_vis \
-    # && sed -i 's/torch>=1.7/torch==1.9.1+cu111/g' requirements.txt \
-    # && sed -i 's/torchvision==0.10.0/torchvision==0.10.1+cu111/g' requirements.txt \
+    && sed -i 's/torch>=1.7/torch==1.9.1+cu111/g' requirements.txt \
+    && sed -i 's/torchvision==0.10.0/torchvision==0.10.1+cu111/g' requirements.txt \
     && sed -i "s/'cuda'/0/g" tools/demo_track.py \
     && pip3 install pip --upgrade \
     && pip3 install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html \
