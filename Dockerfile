@@ -58,6 +58,8 @@ RUN git clone https://github.com/NVIDIA-AI-IOT/torch2trt \
 #     && apt-get -y install cuda
 
 RUN echo "root:root" | chpasswd \
+    && export FLASK_APP=index.py \
+    && export FLASK_DEBUG=1 \
     && adduser --disabled-password --gecos "" "${USERNAME}" \
     && echo "${USERNAME}:${USERNAME}" | chpasswd \
     && echo "%${USERNAME}    ALL=(ALL)   NOPASSWD:    ALL" >> /etc/sudoers.d/${USERNAME} \
