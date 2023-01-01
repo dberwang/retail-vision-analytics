@@ -1,6 +1,8 @@
 FROM nvcr.io/nvidia/tensorrt:21.09-py3
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV FLASK_APP=index.py
+ENV FLASK_DEBUG=1
 ARG USERNAME=user
 ARG WORKDIR=/workspace/retail-vision-analytics
 
