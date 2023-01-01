@@ -51,6 +51,10 @@ RUN git clone https://github.com/NVIDIA-AI-IOT/torch2trt \
     && git apply 8b9fb46ddbe99c2ddf3f1ed148c97435cbeb8fd3.patch \
     && python3 setup.py install
 
+# Doesn't work with the above torch and torchvision packages, but works with the below
+RUN pip3 uninstall -y torch torchvision \
+    && pip3 install torch torchvision --no-cache-dir
+
 # RUN apt-get update && apt-get install -y --no-install-recommends nvidia-container-runtime
 
 # added the below section to install nvidia drivers compatible with tensorrt
