@@ -50,7 +50,7 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 |VIRATS2     | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  | 29.97|
 
 ### Visualization results on MOT challenge test set
-<img src="assets/VIRATS1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
+<img src="assets/VIRAT1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
 <img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 
 ## 5 The Prototype
