@@ -53,7 +53,7 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 <img src="assets/VIRATS1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
 <img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 
-## 5> The Prototype
+## 5 The Prototype
 
 The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 and 8 CPUs. 
 
@@ -61,7 +61,7 @@ The app presents a form for users to upload a video. After upload, the applicati
 
 This product uses Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
 
-## 6> Conclusions
+## 6 Conclusions
 
 Answer the following: 
 
