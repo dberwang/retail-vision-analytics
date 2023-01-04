@@ -8,14 +8,15 @@ To succeed in a highly competitive marketplace, retailers must know their custom
 
 The primary questions that I seek to answer are:
 
-* Can useful retail vision analytics be generated from video using object detection and tracking in Computer Vision?
-* How reliable and costly is an automated process?
+* Can retail vision analytics be generated from video using Computer Vision? 
+* Would generated analytics be reliable?
+* How much would an automated process cost?
 
 Retail Vision Analytics for retail wasn't feasible ten years ago, but it may be possible today. 
 
 ## 2. Data Collection
 
-The primary video data used was the Ground VIRAT Video Dataset Release 2.0. This publicly available video is similar to footage that a retailer would have of customers walking in parking lots and walking areas outside of its stores. The camera views are from various fixed locations, outdoors and during daylight hours. 
+The primary video data used was the Ground VIRAT Video Dataset Release 2.0. This publicly available video is similar to footage that a retailer would have of customers walking in parking lots and walking areas outside of its stores. The camera views are from various fixed locations, outdoors and during daylight hours.
 
 
 ## 3. Data Wrangling
@@ -44,7 +45,7 @@ My second attempt was to run ByteTrack and YOLOX. ByteTrack uses an association 
 
 ByteTrack had extremely few ID switches in the test video despite numerous occlusions and shady regions.  
 
-## 4.3 Results
+## 4.3 Summary of the Results
 
 ### TrackEval
 | Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
@@ -61,12 +62,12 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 and 8 CPUs. 
 
-The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. I use Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
+The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. I use Git, a version control system, to manage and track changes to source code. I also included a dockerfile for easy deployment of the app on multiple systems.
 
 ## 6. Conclusions
 
-This project demonstrates that an automated process to analyze videos can be reliable. The metrics and visual inspections revealed that the tracking achieves human-level performance. Additionally, the algorithm is not subject to mental fatigue and tracks many people better than humans. The algorithm occasionally errors during complex occlusions or nearing objects that mimic humans.
+This project demonstrates that an automated process to analyze videos can be reliable. The metrics and visual inspections revealed that the tracking achieves near human-level performance. Additionally, Computer Vision is not subject to mental fatigue and can track large groups of people better than humans. The algorithm occasionally errors during complex occlusions or when a person walk near objects that resemble humans. However, this can also trick humans too when they do not already know the object and the context of the scene.
 
-The cloud costs to analyze one hour of video are approximately $1.25, assuming a processing speed of $0.50 per hour on a Quadro M4000 that process 2.5 FPS. Processing 12 hours of footage would cost $15 per day which is very affordable.
+The cloud costs to analyze one hour of video are approximately $1.25, assuming a processing speed of $0.50 per hour on a Quadro M4000 that process 2.5 FPS. Processing 12 hours of footage would cost $15 per day which is very affordable. 
 
-Important analytics can be readily and cost effectively generated from the tracking data. For example, how long do customers spend in some regions of the store, which products they are most interested in, and even how they interact with products. Retailers can use this information to optimize store layouts, create targeted marketing campaigns, and improve the shopping experience.
+Important analytics can be cost effectively generated from the tracking data. For example, how long do customers spend in some regions of the store, which products they are most interested in, and how do they interact with products. Retailers can use this information to optimize store layouts, create targeted marketing campaigns, and improve the shopping experience. 
