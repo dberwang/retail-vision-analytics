@@ -46,14 +46,14 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 ## 4.3 Results
 
-### TrackEval Results on the test video
+### TrackEval
 | Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
 |------------|-------|------|------|-------|-------|------|------|------|------|
 |DSwYOLO7    | 80.4 | 52.4 | 43.4 |   3   |   0   |  240  |  294  |  54  |FAIL |
 |BTwYOLOX    | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  |PASS |
 
 
-### Visualization results on MOT challenge test set
+### Visualization
 <img src="assets/VIRAT1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
 <img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 
