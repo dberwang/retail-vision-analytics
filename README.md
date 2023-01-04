@@ -53,7 +53,7 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 <img src="assets/VIRAT1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
 <img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 
-## 5 The Prototype
+## 5. The Prototype
 
 The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 and 8 CPUs. 
 
@@ -61,10 +61,10 @@ The app presents a form for users to upload a video. After upload, the applicati
 
 This product uses Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
 
-## 6 Conclusions
+## 6. Conclusions
 
-This project demonstrates that an automated process to analyze videos can be reliable. The metrics and visual inspections revealed that the tracking achieves human-level performance. Additionally, the algorithm is not subject to fatigue in a monotonous task and better tracks many people than humans. The algorithm occasionally errors during complex occlusions or nearing objects that mimic humans.
-
-Important analytics can be readily generated from the tracking data. For example, how long do customers spend in some regions of the store, which products they are most interested in, and even how they interact with products. Retailers can use this information to optimize store layouts, create targeted marketing campaigns, and improve the shopping experience.
+This project demonstrates that an automated process to analyze videos can be reliable. The metrics and visual inspections revealed that the tracking achieves human-level performance. Additionally, the algorithm is not subject to mental fatigue and better tracks many people than humans. The algorithm occasionally errors during complex occlusions or nearing objects that mimic humans.
 
 The cloud costs to analyze one hour of video are approximately $1.25, assuming a processing speed of $0.50 per hour on a Quadro M4000 that process 2.5 FPS. Processing 12 hours of footage would cost $15 per day and is well within the budget of small retailers.
+
+Important analytics can be readily and cost effectively generated from the tracking data. For example, how long do customers spend in some regions of the store, which products they are most interested in, and even how they interact with products. Retailers can use this information to optimize store layouts, create targeted marketing campaigns, and improve the shopping experience.
