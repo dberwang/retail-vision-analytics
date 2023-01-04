@@ -15,17 +15,14 @@ Retail Vision Analytics for retail wasn't feasible ten years ago, but it may be 
 
 ## 2. Data Collection
 
-The primary video data used was the Ground VIRAT Video Dataset Release 2.0. This publicly available video is similar to footage that a retailer would have of customers walking in parking lots and walking areas outside of its stores. 
+The primary video data used was the Ground VIRAT Video Dataset Release 2.0. This publicly available video is similar to footage that a retailer would have of customers walking in parking lots and walking areas outside of its stores. The camera views are from various fixed locations, outdoors and during daylight hours. 
 
-The camera views are from various fixed locations, outdoors and during daylight hours. These videos capture human activity and are a recognized benchmark dataset for the computer vision community.
 
 ## 3. Data Wrangling
 
-The VIRAT videos include annotation files that notate bounding boxes for known objects in each frame. I planned to use these annotations as the ground truth for measuring the performance of my model. While conducting a visual review of the annotation data, I found numerous discrepancies. This notebook details the videos and several annotation issues discovered during a manual inspection.  
+The VIRAT videos include annotations for known objects in each frame. I planned to use these annotations as the ground truth for measuring the performance of my model and fine-tuning the pre-trained models. 
 
-Next, I decided to test the performance of my models with a small, accurate annotation dataset on one video and perform a visual inspection for the others. Using Roboflow, I annotated the first portion of one VIRAT video. 
-
-These annotations will be the ground truth for computing our accuracy metrics. Due to time and resource limitations for annotating video, the accuracy of the other video footage was by manual visual inspection.
+However, I discovered discrepancies while visually reviewing the annotation data. Consequentially, I manually annotated one of the VIRAT videos using Roboflow. These annotations will be ground truth and be the basis for the formal evaluation metrics. Due to time and resource limitations for annotating the video, a manual visual review assess the model's results on the remainder of the video footage.
 
 ## 4. Models
 
@@ -35,23 +32,41 @@ Our prototype app must do the following:
 * Assign each detected person a unique id and track them through the video.
 * Generate analytics.  
 
-## 4.1 YOLOv7 with DeepSORT
+## 4.1 DeepSORT with YOLOv7
 
-My first solution was to track objects using DeepSORT on persons detected by You-Only-Look-Once v7 (YOLOv7). YOLOv7 to detect and record the location of the class person. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. Locations data is a bounding box around each detected person for each video frame, but this data does not track persons from one frame to the next.
+My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the SORT (Simple Online and Realtime Tracking) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
-YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) and includes models pre-trained on the MS COCO dataset and the source code. I considered transfer learning to improve the pre-trained model. 
+Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people and shady areas. 
 
-After evaluating the pre-trained model and concluding that it is very good at detecting people, I decided that transfer learning was unnecessary.
+Performance assessment by a visual review was unacceptable.
 
-The next step was object tracking using DeepSORT (Simple Online Realtime Tracking) algorithm. DeepSORT assigns an ID to each object and tracks objects using motion and appearance information. Unfortunately, DeepSORT had too many ID switches and frequently failed to handle occlusions involving groups of people and shaded areas. This algorithm's performance on our test video was unacceptable.
+## 4.2 ByteTrack with YOLOX
 
-## 4.2 YOLOX with ByteTrack
+My second attempt was to run ByteTrack and YOLOX. ByteTrack uses an association method that does not discard low-score boxes and employs tracklets to recover actual objects and filter out background detections. The ByteTrack repository comes pre-trained model and uses YOLOX for detection.
 
-The second object-tracking algorithm that I evaluated was ByteTrack. ByteTrack uses an association method that does not discard low-score boxes and employs tracklets to recover actual objects and filter out background detections. ByteTrack's pre-trained model uses YOLOX for detection.
+ByteTrack had extremely few ID switches in the test video despite numerous occlusions and shady regions. This algorithm's performance was acceptable and made few errors. 
 
-ByteTrack had extremely few ID switches in the test video despite numerous occlusions and shady regions. This algorithm's performance was acceptable and made very few errors. 
+Performance assessment by a visual review was acceptable. 
 
-Using the ground truth generated by manual annotations, I scored the test video using TrackEval. TrackEval provides several tracking evaluation metrics, including HOTA and other tracking benchmarks.
 
 ## 5> The Prototype
 
+The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 with 8 CPUs. 
+
+The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. 
+
+This product uses Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
+
+## 6> Results & Conclusions
+
+TrackEval was used to evaluate performance on the annotated video.
+
+## Tracking performance
+### Results on MOT challenge test set
+| Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs | FPS |
+|------------|-------|------|------|-------|-------|------|------|------|------|
+|VIRATS2     | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  | 29.6 |
+
+### Visualization results on MOT challenge test set
+<img src="assets/VIRATS1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
+<img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
