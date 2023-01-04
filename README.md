@@ -36,9 +36,7 @@ Our prototype app must do the following:
 
 My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the SORT (Simple Online and Realtime Tracking) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
-Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people and shady areas. 
-
-Performance assessment by a visual review was unacceptable.
+Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people and shady areas. Performance assessment by a visual review was unacceptable.
 
 ## 4.2 ByteTrack with YOLOX
 
@@ -46,8 +44,14 @@ My second attempt was to run ByteTrack and YOLOX. ByteTrack uses an association 
 
 ByteTrack had extremely few ID switches in the test video despite numerous occlusions and shady regions. This algorithm's performance was acceptable and made few errors. 
 
-Performance assessment by a visual review was acceptable. 
+### Results on MOT challenge test set using TrackEval
+| Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs | FPS |
+|------------|-------|------|------|-------|-------|------|------|------|------|
+|VIRATS2     | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  | 29.97|
 
+### Visualization results on MOT challenge test set
+<img src="assets/VIRATS1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
+<img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 
 ## 5> The Prototype
 
@@ -57,16 +61,9 @@ The app presents a form for users to upload a video. After upload, the applicati
 
 This product uses Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
 
-## 6> Results & Conclusions
+## 6> Conclusions
 
-TrackEval was used to evaluate performance on the annotated video.
+Answer the following: 
 
-## Tracking performance
-### Results on MOT challenge test set
-| Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs | FPS |
-|------------|-------|------|------|-------|-------|------|------|------|------|
-|VIRATS2     | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  | 29.97|
-
-### Visualization results on MOT challenge test set
-<img src="assets/VIRATS1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
-<img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
+* Can useful customer-specific analytics be generated from video using object detection and tracking in Computer Vision?
+* How reliable and costly is an automated process?
