@@ -57,13 +57,11 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 and 8 CPUs. 
 
-The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. 
-
-This product uses Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
+The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. I use Git, a version control system, to manage and track changes to source code. I also included a docker file for easy deployment of the app on multiple systems.
 
 ## 6. Conclusions
 
-This project demonstrates that an automated process to analyze videos can be reliable. The metrics and visual inspections revealed that the tracking achieves human-level performance. Additionally, the algorithm is not subject to mental fatigue and better tracks many people than humans. The algorithm occasionally errors during complex occlusions or nearing objects that mimic humans.
+This project demonstrates that an automated process to analyze videos can be reliable. The metrics and visual inspections revealed that the tracking achieves human-level performance. Additionally, the algorithm is not subject to mental fatigue and tracks many people better than humans. The algorithm occasionally errors during complex occlusions or nearing objects that mimic humans.
 
 The cloud costs to analyze one hour of video are approximately $1.25, assuming a processing speed of $0.50 per hour on a Quadro M4000 that process 2.5 FPS. Processing 12 hours of footage would cost $15 per day and is well within the budget of small retailers.
 
