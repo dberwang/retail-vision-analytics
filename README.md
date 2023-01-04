@@ -8,7 +8,7 @@ To succeed in a highly competitive marketplace, retailers must know their custom
 
 The primary questions that I seek to answer are:
 
-* Can useful customer-specific analytics be generated from video using object detection and tracking in Computer Vision?
+* Can useful retail vision analytics be generated from video using object detection and tracking in Computer Vision?
 * How reliable and costly is an automated process?
 
 Retail Vision Analytics for retail wasn't feasible ten years ago, but it may be possible today. 
