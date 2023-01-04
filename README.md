@@ -51,7 +51,7 @@ Performance assessment by a visual review was acceptable.
 
 ## 5> The Prototype
 
-The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 with 8 CPUs. 
+The product is a Flask web app running on an Ubuntu 20.04 server in the Paperspace Cloud using a Core machine with a Quadro M4000 and 8 CPUs. 
 
 The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. 
 
