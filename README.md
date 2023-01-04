@@ -28,15 +28,15 @@ However, I discovered discrepancies while visually reviewing the annotation data
 
 Our prototype app must do the following:
 
-* Detect and locate persons in the video.
-* Assign each detected person a unique id and track them through the video.
-* Generate analytics.  
+* Detect and locate persons in the video
+* Assign each detected person a unique id and track them through the video
+* Generate analytics 
 
 ## 4.1 DeepSORT with YOLOv7
 
 My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the SORT (Simple Online and Realtime Tracking) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
-Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people and shady areas. Performance assessment by a visual review was unacceptable.
+Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. Performance assessment by a visual review was unacceptable.
 
 ## 4.2 ByteTrack with YOLOX
 
