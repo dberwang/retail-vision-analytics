@@ -65,7 +65,7 @@ TrackEval was used to evaluate performance on the annotated video.
 ### Results on MOT challenge test set
 | Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs | FPS |
 |------------|-------|------|------|-------|-------|------|------|------|------|
-|VIRATS2     | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  | 29.6 |
+|VIRATS2     | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  | 29.97|
 
 ### Visualization results on MOT challenge test set
 <img src="assets/VIRATS1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
