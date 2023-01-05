@@ -52,13 +52,13 @@ Our prototype app must do the following:
 * Assign each detected person a unique id and track them through the video
 * Generate analytics 
 
-## 3.1 DeepSORT with YOLOv7 (DSwYOLOV7)
+## 3.1 DeepSORT with YOLOv7
 
 My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the SORT (Simple Online and Realtime Tracking) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
 Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. 
 
-## 3.2 ByteTrack with YOLOX (BTwYOLOX)
+## 3.2 ByteTrack with YOLOX
 
 My second attempt was to run ByteTrack and YOLOX. ByteTrack uses an association method that does not discard low-score boxes and employs tracklets to recover actual objects and filter out background detections. The ByteTrack repository comes pre-trained model and uses YOLOX for detection.
 
