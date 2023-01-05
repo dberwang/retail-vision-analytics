@@ -108,9 +108,7 @@ def download_zip():
     # Iterate over all the files in the directory
     for root, dirs, files in os.walk(app.config['DOWNLOAD_PATH']):
         for file in files:
-            if os.path.splitext(os.path.join(app.config['DOWNLOAD_PATH'], file))[1] == '.txt':
-            # Add txt file to the zip file
-                zip_file.write(os.path.join(root, file), file)
+            zip_file.write(os.path.join(root, file), file)
 
     # Close the zip file
     zip_file.close()
