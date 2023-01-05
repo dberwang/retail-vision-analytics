@@ -3,10 +3,10 @@
 ## Tracking Performance
 
 ### Results on VIRAT videos, evaluated using TrackEval
-| Dataset    |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
-|------------|-------|------|------|-------|-------|------|------|------|------|
-|DSwYOLO7    | 80.4 | 52.4 | 43.4 |   3   |   0   |  240  |  294  |  54  |FAIL |
-|BTwYOLOX    | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  |PASS |
+| Dataset           |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
+|-------------------|-------|------|------|-------|-------|------|------|------|------|
+|DeepSORT+YOLO7     | 80.4 | 52.4 | 43.4 |   3   |   0   |  240  |  294  |  54  |FAIL |
+|ByteTrack+YOLOX    | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  |PASS |
 
 
 ### Visualization Results (ByteTrack with YOLOX)
