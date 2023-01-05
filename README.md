@@ -9,7 +9,7 @@
 |ByteTrack+YOLOX    | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  |PASS |
 
 
-### Visualization Results (ByteTrack with YOLOX)
+### Visualization Results (ByteTrack + YOLOX)
 <img src="assets/VIRAT1.gif" width="400"/>   <img src="assets/VIRAT2.gif" width="400"/>
 <img src="assets/VIRAT4.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 
