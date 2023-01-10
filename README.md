@@ -11,7 +11,7 @@
 
 ### Visualization Results (ByteTrack + YOLOX)
 <img src="assets/VIRAT2.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
-<img src="assets/balter_pos.gif" width="400"/>   <img src="assets/pos_camera.gif" width="400"/>
+<img src="assets/balter_pos.gif" width="400"/>   <img src="assets/VIRAT1.gif" width="400"/>
 
 ## Installation
 Run the below commands and then open your web browser @ x.x.x.x:5000
