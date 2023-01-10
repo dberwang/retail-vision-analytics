@@ -55,11 +55,7 @@ Our prototype app must do the following:
 
 My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the SORT (Simple Online and Realtime Tracking) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
-Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. 
-
-| Dataset           |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
-|-------------------|-------|------|------|-------|-------|------|------|------|------|
-|DeepSORT+YOLO7     | 80.4 | 52.4 | 43.4 |   3   |   0   |  240  |  294  |  54  |FAIL |
+Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. The HOTA score was 43.4 and there were 54 id switches during a 30 second period. 
 
 ## 3.2 ByteTrack with YOLOX
 
