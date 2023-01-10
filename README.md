@@ -66,9 +66,9 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 ## 4. The Prototype
 
-The product is a Flask web app running on an Ubuntu 20.04 server with a Quadro M4000 and 8 CPUs in the cloud. 
+The prototype is a Flask web app running on an Ubuntu 20.04 server with a Quadro M4000 and 8 CPUs in the cloud. 
 
-The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. I use Git, a version control system, to manage and track changes to source code. I also included a dockerfile for easy deployment of the app on multiple systems.
+The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. Git was used to manage and track changes to source code.  A dockerfile was created for easy deployment on multiple systems.
 
 ## 6. Conclusions
 
