@@ -2,10 +2,9 @@
 
 ## Tracking Performance
 
-### Results on VIRAT videos, evaluated using TrackEval
+### Results on VIRAT_S_000002 evaluated using TrackEval
 | Dataset           |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
 |-------------------|-------|------|------|-------|-------|------|------|------|------|
-|DeepSORT+YOLO7     | 80.4 | 52.4 | 43.4 |   3   |   0   |  240  |  294  |  54  |FAIL |
 |ByteTrack+YOLOX    | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  |PASS |
 
 
@@ -57,6 +56,10 @@ Our prototype app must do the following:
 My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the SORT (Simple Online and Realtime Tracking) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
 Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. 
+
+| Dataset           |  MOTA | IDF1 | HOTA | MT | ML | FP | FN | IDs |VISUAL|
+|-------------------|-------|------|------|-------|-------|------|------|------|------|
+|DeepSORT+YOLO7     | 80.4 | 52.4 | 43.4 |   3   |   0   |  240  |  294  |  54  |FAIL |
 
 ## 3.2 ByteTrack with YOLOX
 
