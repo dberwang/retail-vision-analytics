@@ -13,7 +13,7 @@
 <img src="assets/balter_pos.gif" width="400"/>   <img src="assets/VIRAT1.gif" width="400"/>
 
 ## Installation
-Run the below commands and then open your web browser @ x.x.x.x:5000
+Run the below commands
 ```shell
 git clone https://github.com/dberwang/retail-vision-analytics
 cd retail-vision-analytics
@@ -21,6 +21,7 @@ docker build -t retail-vision-analytics:latest .
 docker run --gpus all -it --rm --privileged -p 5000:5000 retail-vision-analytics:latest
 flask run -h 0.0.0.0
 ```
+Then open your web browser @ x.x.x.x:5000
 
 
 ## 1. Project Proposal
