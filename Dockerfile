@@ -17,7 +17,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y \
         libva-dev libdrm-dev xorg xorg-dev protobuf-compiler \
         openbox libx11-dev libgl1-mesa-glx libgl1-mesa-dev \
         libtbb2 libtbb-dev libopenblas-dev libopenmpi-dev \
-        libprotoc-dev python3-opencv python3.8-dev python3.8-venv \
+        libprotoc-dev python3-opencv python3.8-dev python3.8-venv ffmpeg \
     && sed -i 's/# set linenumbers/set linenumbers/g' /etc/nanorc \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
