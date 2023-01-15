@@ -67,12 +67,12 @@ def upload_process_video():
         
         # Open the notebook after copying it to tmp folder
         os.system('cp notebooks/analytics.ipynb tmp/analytics.ipynb')
-        with open('notebooks/analytics.ipynb') as f:
+        with open('tmp/analytics.ipynb') as f:
             nb = nbformat.read(f, as_version=4)
         
         # Execute the notebook
         ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
-        ep.preprocess(nb, {'metadata': {'path': 'notebooks/'}})
+        ep.preprocess(nb, {'metadata': {'path': 'tmp/'}})
 
         # Save the executed notebook 
         with open('tmp/analytics.ipynb', 'w', encoding='utf-8') as f:
