@@ -12,6 +12,10 @@
 <img src="assets/VIRAT2.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 <img src="assets/balter_pos.gif" width="400"/>   <img src="assets/VIRAT1.gif" width="400"/>
 
+### Example Analytics
+<img src="assets/maps.jpg" width="400"/>   <img src="assets/timelines.jpg" width="400"/>
+
+
 ## Installation
 Run the below commands
 ```shell
