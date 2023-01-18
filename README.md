@@ -17,7 +17,7 @@
 
 
 ## Installation
-Run the below commands
+Run the below commands. GPU is required.
 ```shell
 git clone https://github.com/dberwang/retail-vision-analytics
 cd retail-vision-analytics
@@ -25,7 +25,7 @@ docker build -t retail-vision-analytics:latest .
 docker run --gpus all -it --rm --privileged -p 5000:5000 retail-vision-analytics:latest
 flask run -h 0.0.0.0
 ```
-Then open your web browser @ x.x.x.x:5000
+Then open your web browser: x.x.x.x:5000
 
 
 ## 1. Project Proposal
@@ -70,9 +70,13 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 ## 4. The Prototype
 
-The prototype is a Flask web app running on an Ubuntu 20.04 server with a Quadro M4000 and 8 CPUs in the cloud. 
+The prototype is a Flask web app running on an Ubuntu 20.04 server with a Quadro M4000 and 8 CPUs in the cloud. Git was used to manage and track source code changes, and a dockerfile was created for easy deployment on multiple systems.
 
-The app presents a form for users to upload a video. After upload, the application generates analytics and annotates the video using ByteTrack with YOLOX. Finally, a results page allows users to view or download the generated data. Git was used to manage and track changes to source code.  A dockerfile was created for easy deployment on multiple systems.
+The app presents a form for the user to upload a video. The user selects their video and clicks the upload and process button. After upload, the application annotates the video using ByteTrack with YOLOX and generates a text file with the detection and tracking results.
+
+Next, the app runs the analytics notebook based on the text results. This notebook maps customer movements and visualizes customer timelines and counts. This information aids businesses in understanding customer behavior and making data-driven decisions. 
+
+Finally, a results page allows users to view or download the data. 
 
 ## 6. Conclusions
 
