@@ -8,21 +8,21 @@
 |ByteTrack+YOLOX    | 97.8 | 91.9 | 73.1 |   3   |   0   |   26  |   37  |   3  |PASS |
 
 
-### Visualization Results (ByteTrack + YOLOX)
+### Visualization (ByteTrack + YOLOX)
 <img src="assets/VIRAT2.gif" width="400"/>   <img src="assets/shopping_mall.gif" width="400"/>
 <img src="assets/balter_pos.gif" width="400"/>   <img src="assets/VIRAT1.gif" width="400"/>
 
-### Example Analytics
-<img src="assets/maps.jpg" width="400"/>   <img src="assets/timelines.jpg" width="400"/>
+### [Analytics](https://github.com/dberwang/retail-vision-analytics/blob/main/notebooks/analytics.ipynb)
+<img src="assets/maps.jpg" width="266"/>   <img src="assets/timelines.jpg" width="266"/>   <img src="assets/counts.jpg" width="266"/>
 
 
 ## Installation
-Run the below commands. GPU is required.
+Please run the below on system with GPU.
 ```shell
 git clone https://github.com/dberwang/retail-vision-analytics
 cd retail-vision-analytics
-docker build -t retail-vision-analytics:latest .
-docker run --gpus all -it --rm --privileged -p 5000:5000 retail-vision-analytics:latest
+sudo docker build -t retail-vision-analytics:latest .
+sudo docker run --gpus all -it --rm --privileged -p 5000:5000 retail-vision-analytics:latest
 flask run -h 0.0.0.0
 ```
 Then open your web browser: x.x.x.x:5000
