@@ -70,23 +70,23 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 ## 4. The Prototype
 
+<img src="assets/demo.gif" width="400"/>
+
 The Flask web app prototype was deployed on an Ubuntu 20.04 server and successfully tested on a Tesla V100 machine with 30 Gib RAM and 8 CPUs. GitHub is used for version control and includes a dockerfile for easy cloud deployment. 
 
 Users can access the app through a web browser and upload their videos. The app then analyzes the video, converts it to a web-compatible format, generates a results file, and runs analytics using a Jupyter notebook. The notebook includes analytics such as customer maps, timelines, and counts. After processing, a results page allows users to view or download the video and data.
 
 Below are the results of a time study conducted on a 5-minute video, 641 MB, and 30 FPS. 
 
-*Analyze video: 20 minutes
-*Convert video: 5 minutes
-*Run the analytics: 10 seconds
+* Analyze video: 20 minutes
+* Convert video: 5 minutes
+* Run the analytics: 10 seconds
 
 The total processing time is five times the duration of the video. If the app eliminated video conversion, the processing time would decrease by 20%. However, 12 hours of store video would still take two days to process. 
 
 Operationalized versions of this product should be faster to meet customer needs. Quicker processing is possible by splitting and running distinct video sections on multiple GPUs. For example, for a roughly 5x improvement, we combine the results of 5 GPUs that uniquely run 20% of the video. Enhancements that reduce costs should also be investigated, such as frame skipping and algorithm optimization.  
 
 ## 5. Conclusions
-
-[Demo](https://github.com/dberwang/retail-vision-analytics/blob/main/demo/demo_web.mp4)
 
 This project showcases the reliability of an automated process for analyzing videos utilizing current algorithms in Computer Vision. The metrics and visual inspection results indicate that the tracking performance is on par with human tracking.
 
