@@ -46,7 +46,7 @@ Retail Vision Analytics for retail wasn't feasible ten years ago, but it may be 
 
 The primary video data used was the Ground VIRAT Video Dataset Release 2.0. This publicly available video is similar to footage that a retailer would have of customers walking in parking lots and walking areas outside of its stores. The camera views are from various fixed locations, outdoors and during daylight hours.
 
-The VIRAT videos include annotations for known objects in each frame. I planned to use these annotations to fine-tune the pre-trained models and evaluate performance. The format of the VIRAT annotations differed from YOLO and required converting before generating IOU metrics. Also, I discovered discrepancies while visually reviewing the annotation data that included some sloppy fits and missing detections. Consequentially, I manually annotated one of the VIRAT videos using Roboflow to establish ground truth for evaluating the model. Due to time and resource limitations for annotating the video, a manual visual review assessed the model's results of an unannotated video.
+The VIRAT videos include annotations for known objects in each frame. I planned to use these annotations to fine-tune the pre-trained models and evaluate performance. The format of the VIRAT annotations differed from YOLO and required converting before generating IOU metrics. Also, I discovered discrepancies while visually reviewing the annotation data that included some sloppy fits and missing detections. Consequentially, I manually annotated one video using Roboflow to establish ground truth for evaluating the model. Due to time and resource limitations for annotating the video, a manual visual review assessed the model's results of an unannotated video.
 
 ## 3. Models
 
@@ -60,7 +60,7 @@ Our prototype app must do the following:
 
 My first solution was to use DeepSORT for tracking and run You-Only-Look-Once v7 (YOLOv7) for detection. DeepSORT extends the Simple Online and Realtime Tracking (SORT) to integrate appearance information based on a deep appearance descriptor. YOLOv7 is a state-of-the-art object detection algorithm that uses a convolutional neural network (CNN) trained on the MS COCO dataset. 
 
-Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. The HOTA score was 43.4 and there were 54 id switches during a 30 second period. 
+Unfortunately, DeepSORT had too many ID switches and frequently performed poorly with occlusions involving groups of people. The HOTA score was 43.4 and there were 54 id switches during a 30 second period.  
 
 ## 3.2 ByteTrack with YOLOX
 
@@ -74,7 +74,7 @@ ByteTrack had extremely few ID switches in the test video despite numerous occlu
 
 The Flask web app prototype was deployed on an Ubuntu 20.04 server and successfully tested on a Tesla V100 machine with 30 Gib RAM and 8 CPUs. GitHub is used for version control and includes a dockerfile for easy cloud deployment. 
 
-Users can access the app through a web browser and upload their videos. The app then analyzes the video, converts it to a web-compatible format, generates a results file, and runs analytics using a Jupyter notebook. The notebook includes analytics such as customer maps, timelines, and counts. After processing, a results page allows users to view or download the video and data.
+Users can access the app through a web browser and upload their videos. The app then analyzes the video, converts it to a web-compatible format, generates a results file, and runs analytics using a Jupyter notebook. The notebook includes analytics such as customer heatmaps, timelines, and counts. After processing, a results page allows users to view or download the video and data. 
 
 Below are the results of a time study conducted on a 5-minute video, 641 MB, and 30 FPS. 
 
@@ -82,9 +82,7 @@ Below are the results of a time study conducted on a 5-minute video, 641 MB, and
 * Convert video: 5 minutes
 * Run the analytics: 10 seconds
 
-The total processing time is five times the duration of the video. If the app eliminated video conversion, the processing time would decrease by 20%. However, 12 hours of store video would still take two days to process. 
-
-Operationalized versions of this product should be faster to meet customer needs. Quicker processing is possible by splitting and running distinct video sections on multiple GPUs. For example, for a roughly 5x improvement, we combine the results of 5 GPUs that uniquely run 20% of the video. Enhancements that reduce costs should also be investigated, such as frame skipping and algorithm optimization.  
+The total processing time is five times the duration of the video. If the app eliminated video conversion, the processing time would decrease by 20%. However, 12 hours of store video would still take two days to process. Operationalized versions of this product should be faster to meet customer needs. Enhancements that reduce costs should also be investigated, such as frame skipping and algorithm optimization. Skipping 50% of the frames, every other frame, resulted in a 30% reduction in analysis time without siginificantly affected the results.
 
 ## 5. Conclusions
 
